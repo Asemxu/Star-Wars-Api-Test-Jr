@@ -1,5 +1,5 @@
 import Planet from "./planet"
-import Specie from "./Specie"
+import Specie from "./specie"
 import Vehicle from "./vehicle"
 
 interface Character{

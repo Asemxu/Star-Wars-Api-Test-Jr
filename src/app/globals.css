@@ -1,6 +1,6 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 *{
   margin:0;
@@ -64,7 +64,7 @@ p{
 .header{
   background-color: var(--ravn-black);
   width:100%;
-  height: 3.25rem;
+  /* height: 3.25rem; */
   padding:1rem 2.063rem;
 }
 
@@ -81,20 +81,6 @@ p{
   overflow-y: auto;
   border-right: 0.031rem solid #00000038
 }
-@media screen and (max-width:767px) {
-  .title-header{
-    text-align: center;
-  }
-  .title-header::after{
-    content:'People of Star Wars';
-  }
-}
-@media screen and (min-width:769px) {
-  .title-header::after{
-    content: 'Star Wars Registry';
-  }
-}
-
 
 .sidebar::-webkit-scrollbar {
   width: 10px;
@@ -166,5 +152,27 @@ main{
   margin-top:2rem
 }
 
-.list-vehicles{
+@media screen and (max-width:767px) {
+  /* .main-container{
+    display:block
+  }
+  .sidebar{
+    width:100vw
+  }
+  main{
+    width:100%
+  }
+
+  .title-header{
+    text-align: center;
+  }
+
+  .title-header::after{
+    content:'People of Star Wars';
+  } */
+}
+@media screen and (min-width:769px) {
+  /* .title-header::after{
+    content: 'Star Wars Registry';
+  } */
 }

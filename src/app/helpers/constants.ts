@@ -23,4 +23,9 @@ const Characters = {
     EMPTY : 0,
     EMPTYCHARACTERS : []
 }
-export  { MessageTypes , ValidFetch , ColorClass , CharacterMessage , Characters } 
+
+const Titles = {
+    HEADER : 'Ravn Star Wars Registry',
+
+}
+export  { MessageTypes , ValidFetch , ColorClass , CharacterMessage , Characters , Titles } 
