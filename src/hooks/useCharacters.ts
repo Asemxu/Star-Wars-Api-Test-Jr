@@ -5,13 +5,12 @@ import getKeysCharacters from '@/app/helpers/getKeysCharacter';
 import isEmpty from '../app/utils/isEmpty'
 import Vehicle from '@/app/interfaces/vehicle';
 import Keys from '@/app/interfaces/Keys';
-import { AppDispatch, type RootState } from '@/app/redux/store';
-import { useSelector, useDispatch } from 'react-redux';
-import { getAllCharacters  } from '@/app/redux/features/character/characterSlice'; 
+import { type RootState } from '@/app/redux/store';
+import { useSelector } from 'react-redux';
+import { fetchAllCharacters  } from '@/app/redux/features/character/characterSlice'; 
 
 const useCharacters = () => {
   const { titleHeader , isLoading , isError , characters  } = useSelector((state: RootState) => state.character);
-  const dispatch = useDispatch<AppDispatch>();
   // const [characters,setCharacters] = useState(Array<Character>)
   // const [isLoading, setIsLoading] = useState(true)
   // const [isError , setIsError] = useState(false)
@@ -19,7 +18,6 @@ const useCharacters = () => {
   const [keysCharacter , setKeysCharacter] = useState(Array<Keys>)
 
   useEffect(() => {    
-    // dispatch(getAllCharacters())
     // const fetchCharacters = async  () => {
     //   const charactersFetch =  await getAllCharacters()
     //   if(isEmpty(charactersFetch)){
@@ -60,8 +58,7 @@ const useCharacters = () => {
     setKeysCharacter(getKeysCharacters(character))
   }
 
-  const getAllCharacters = async () =>{
-    console.log("Hola")
+
   //   try{
   //     const rest = await fetch(process.env.API_URL + "people/?page=1")
   //     const json = await rest.json()
@@ -93,10 +90,8 @@ const useCharacters = () => {
   //     console.log(ex)
   //     return Characters.EMPTYCHARACTERS
   //   }
-  }
 
   return {
-    getAllCharacters,
     characters,
     isLoading,
     keysCharacter,
