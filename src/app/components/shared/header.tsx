@@ -1,7 +1,7 @@
 const Header = () => {
     return (
         <header className="header">
-            <h2>Star Wars Registry</h2>
+            <h2 className="title-header"></h2>
         </header>
     )
 }

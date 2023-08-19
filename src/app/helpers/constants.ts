@@ -15,6 +15,12 @@ const ColorClass = {
 
 const CharacterMessage = {
     NOTSPECIES : 0,
-    HUMAN : 'Human'
+    HUMAN : 'Human',
+    NOTVEHICLES : 0
 }
-export  { MessageTypes , ValidFetch , ColorClass , CharacterMessage } 
+
+const Characters = {
+    EMPTY : 0,
+    EMPTYCHARACTERS : []
+}
+export  { MessageTypes , ValidFetch , ColorClass , CharacterMessage , Characters } 

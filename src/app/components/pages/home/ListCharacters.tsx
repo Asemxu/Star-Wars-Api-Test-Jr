@@ -1,14 +1,12 @@
 import React from 'react'
 import Character from '@/app/interfaces/character'
-const ListCharacters:React.FC<{characters:Array<Character>}> = ({characters}) => {
+import CharacterList from './CharacterList'
+const ListCharacters:React.FC<{characters:Array<Character> , handleClickCharacter:Function}> = ({characters , handleClickCharacter}) => {
     return(
         <ul className="list-characters">
-            {characters.map((character:Character) =>{
+            {characters.map((character:Character,index) =>{
                 return(
-                    <li key={character.name.length}>
-                        <h2 className='text-dark'>{character.name}</h2>
-                        <p className="text-light">{character.specieName}</p>
-                    </li>
+                    <CharacterList key={index} character={character} handleClickCharacter={handleClickCharacter} />
                 )
             })}
         </ul>
