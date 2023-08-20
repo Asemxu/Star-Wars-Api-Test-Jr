@@ -9,7 +9,7 @@ import isEmpty from "@/app/utils/isEmpty";
 import React from "react";
 import useHeader from "@/hooks/useHeader";
 import useSwipe from "@/hooks/useSwipe";
-import ListCharacters from "../pages/home/listCharacters";
+import ListCharacters from "@/app/components/pages/home/listCharacters";
 import { AppDispatch } from "@/app/redux/store";
 
 const Sidebar:React.FC<{}> = ({}) => {
