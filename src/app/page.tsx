@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
-import  useCharacters from '../hooks/useCharacters'
-import DetailCharacterContainer from './components/pages/home/detailCharacterContainer'
+import  useCharacters from '@/hooks/useCharacters'
+import DetailCharacterContainer from '@/app/components/pages/home/detailCharacterContainer'
 
 const  HomePage = () => {
   const {character , keysCharacter } = useCharacters()
