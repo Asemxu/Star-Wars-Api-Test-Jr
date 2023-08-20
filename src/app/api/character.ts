@@ -34,20 +34,20 @@ export const getAllCharacters =  async (page:number) =>{
         }
         }else{
           //Obtenemos la primera especie, ya que pueden tener multples especies y eso llamaria multiples peticiones
-          // const specie = await getSpecie(character.species[0])
-          // character.specie =specie
+          const specie = await getSpecie(character.species[0])
+          character.specie =specie
         }
-        // if(character.vehicles.length !== CharacterMessage.NOTVEHICLES){
-          // let vechicles = new Array<Vehicle>
-          // for(const vehicle of character.vehicles){
-          //     vechicles.push(await getVehicle(vehicle))
-          // }
-          // character.vehiclesData = vechicles
-        // }else{
-          // character.vehiclesData = []
-        // }
-          // const planet = await getHomeWorld(character.homeworld)
-          // character.planet = planet
+        if(character.vehicles.length !== CharacterMessage.NOTVEHICLES){
+          let vechicles = new Array<Vehicle>
+          for(const vehicle of character.vehicles){
+              vechicles.push(await getVehicle(vehicle))
+          }
+          character.vehiclesData = vechicles
+        }else{
+          character.vehiclesData = []
+        }
+          const planet = await getHomeWorld(character.homeworld)
+          character.planet = planet
       }
       return { characters , allPages : Math.ceil(json.count/10) } 
     }
