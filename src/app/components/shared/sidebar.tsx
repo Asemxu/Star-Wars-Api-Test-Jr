@@ -9,20 +9,22 @@ import { useDispatch } from "react-redux";
 import isEmpty from "@/app/utils/isEmpty";
 import React from "react";
 import useHeader from "@/hooks/useHeader";
+import useSwipe from "@/hooks/useSwipe";
+
 const Sidebar:React.FC<{}> = ({}) => {
-  const { isError , isLoading , clickCharacterList , characters , character   } = useCharacters()
+  const { isError , isLoading , clickCharacterList , characters , character , currentPage , isExecutingFetch  } = useCharacters()
   const dispatch = useDispatch()
   const { windowSize } = useHeader()
+  const { handlers } = useSwipe()
   useEffect(() => {
-    dispatch(fetchAllCharacters())
+    dispatch(fetchAllCharacters(currentPage))
   },[])
-  
+
   if(isEmpty(character) || windowSize > Breakpoints.NOTMOBILE)
     return(
-      <aside className="sidebar">
-        {isError || isLoading 
-        ? <Message type={isLoading ? MessageTypes.LOADER : MessageTypes.ERROR} text={isError ? ValidFetch.FAILEDTOLOADDATA  : '' } className={isError ? ColorClass.ERROR  : '' }/>
-        : <ListCharacters characters={characters}  handleClickCharacter={clickCharacterList}/>}
+      <aside {...handlers} className="sidebar">
+        <ListCharacters characters={characters}  handleClickCharacter={clickCharacterList}/>
+        <Message type={isLoading ? MessageTypes.LOADER : MessageTypes.ERROR} text={isError ? ValidFetch.FAILEDTOLOADDATA  : '' } className={isError ? ColorClass.ERROR  : '' }/>
       </aside>)
   return <React.Fragment></React.Fragment>
 }

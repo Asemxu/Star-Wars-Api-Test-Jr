@@ -11,7 +11,7 @@ const ValidFetch = {
 } 
 
 const ColorClass = {
-    ERROR : 'text-high-emphasis message'
+    ERROR : 'text-high-emphasis message text-error'
 }
 
 const CharacterMessage = {

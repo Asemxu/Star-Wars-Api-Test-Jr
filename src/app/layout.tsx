@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 import Header from './components/shared/header'
 import Providers from './redux/provider'
 import Sidebar from './components/shared/sidebar'
+
 const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Create Next App',

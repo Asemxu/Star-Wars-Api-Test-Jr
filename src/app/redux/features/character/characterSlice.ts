@@ -12,6 +12,8 @@ export const initialState:ReduxInfo = {
   characters: [],
   titleHeader:'Ravn Star Wars Registry',
   keysCharacter:[],
+  currentPage:1,
+  allPages:0,
   // characterUrl:'',
   character:{
     name: "",
@@ -35,8 +37,8 @@ export const initialState:ReduxInfo = {
   }
 }
 
-export const fetchAllCharacters = createAsyncThunk('characters/fetchAllCharacters',async () => {
-  const response = await getAllCharacters()
+export const fetchAllCharacters = createAsyncThunk('characters/fetchAllCharacters',async (currentPage:number) => {
+  const response = await getAllCharacters(currentPage)
   return response
   }
 )
@@ -53,17 +55,19 @@ export const characterSlice = createSlice({
     },
     setInitialStateCharacter:(state,action) => {
       state.character = action.payload.character
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchAllCharacters.pending, (state, action) => {
         state.isLoading = true
       })
-      .addCase(fetchAllCharacters.fulfilled, (state, action: PayloadAction<Character[]>) => {
+      .addCase(fetchAllCharacters.fulfilled, (state, action: PayloadAction<Object>) => {
         state.isLoading = false
-        state.characters = action.payload
-        if(!isEmpty(action.payload))
+        state.characters = state.characters.concat(action.payload.characters)
+        state.allPages = action.payload.allPages
+        state.currentPage = state.currentPage + 1
+        if(!isEmpty(action.payload.characters))
           state.isError = true
         else
           state.isError = false

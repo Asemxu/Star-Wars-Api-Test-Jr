@@ -10,8 +10,8 @@ import { setCharacter , setKeysCharacter } from '@/app/redux/features/character/
 import { useDispatch } from 'react-redux';
 const useCharacters = () => {
   const dispatch = useDispatch()
-  const router = useRouter()
-  const { titleHeader , isLoading , isError , characters  , keysCharacter , character } = useSelector((state: RootState) => state.character);
+  // const router = useRouter()
+  const { titleHeader , isLoading , isError , characters  , keysCharacter , character , currentPage , allPages } = useSelector((state: RootState) => state.character);
 
   const clickCharacterList = (character:Character) => {
     // const characterID = getCharacterID(character.url)
@@ -23,7 +23,9 @@ const useCharacters = () => {
 
 
   return {
+    currentPage,
     characters,
+    allPages,
     isLoading,
     keysCharacter,
     clickCharacterList,
