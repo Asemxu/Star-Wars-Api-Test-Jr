@@ -1,7 +1,6 @@
 import Keys from '@/app/interfaces/Keys'
-import Character from '@/app/interfaces/character'
 import React from 'react'
-const generalInformationItem : React.FC<{keyValue:Keys , character:Character}> = ({ keyValue,character }) => {
+const generalInformationItem : React.FC<{keyValue:Keys , character:any}> = ({ keyValue,character }) => {
   return (
     <li className="general-information-item">
       <h2 className="text-light">{keyValue.valueFormated}</h2>

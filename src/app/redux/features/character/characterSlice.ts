@@ -61,7 +61,7 @@ export const characterSlice = createSlice({
       .addCase(fetchAllCharacters.pending, (state, action) => {
         state.isLoading = true
       })
-      .addCase(fetchAllCharacters.fulfilled, (state, action: PayloadAction<Object>) => {
+      .addCase(fetchAllCharacters.fulfilled, (state, action: PayloadAction<any>) => {
         state.isLoading = false
         state.characters = state.characters.concat(action.payload.characters)
         state.allPages = action.payload.allPages

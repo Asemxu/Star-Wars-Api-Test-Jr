@@ -10,10 +10,11 @@ import React from "react";
 import useHeader from "@/hooks/useHeader";
 import useSwipe from "@/hooks/useSwipe";
 import ListCharacters from "../pages/home/listCharacters";
+import { AppDispatch } from "@/app/redux/store";
 
 const Sidebar:React.FC<{}> = ({}) => {
   const { isError , isLoading , clickCharacterList , characters , character , currentPage  } = useCharacters()
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<AppDispatch>()
   const { windowSize } = useHeader()
   const { handlers } = useSwipe()
   useEffect(() => {
