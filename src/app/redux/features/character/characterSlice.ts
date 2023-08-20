@@ -3,17 +3,40 @@ import Character from "@/app/interfaces/character";
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import ReduxInfo from "@/app/interfaces/reduxInfo";
 import { getAllCharacters } from "@/app/api/character";
-const initialState:ReduxInfo = {
+import getKeysCharacters from "@/app/helpers/getKeysCharacter";
+import isEmpty from "@/app/utils/isEmpty";
+
+export const initialState:ReduxInfo = {
   isLoading:true,
   isError:false,
   characters: [],
-  titleHeader:'Star Wars Registry',
-  characterUrl:''
+  titleHeader:'Ravn Star Wars Registry',
+  keysCharacter:[],
+  // characterUrl:'',
+  character:{
+    name: "",
+    gender: "",
+    species: [],
+    homeworld: "",
+    mass: "",
+    planet: {
+      name:""
+    },
+    specie: {
+      name:""
+    },
+    hair_color: "",
+    skin_color: "",
+    eye_color: "",
+    birth_year: "",
+    vehicles: [],
+    vehiclesData: [],
+    url:""
+  }
 }
 
 export const fetchAllCharacters = createAsyncThunk('characters/fetchAllCharacters',async () => {
   const response = await getAllCharacters()
-  console.log(response);
   return response
   }
 )
@@ -21,7 +44,17 @@ export const fetchAllCharacters = createAsyncThunk('characters/fetchAllCharacter
 export const characterSlice = createSlice({
   name:'Character',
   initialState,
-  reducers:{},
+  reducers:{
+    setCharacter:(state,action) => {
+      state.character = action.payload
+    },
+    setKeysCharacter:(state,action) => {
+      state.keysCharacter = getKeysCharacters(action.payload)
+    },
+    setInitialStateCharacter:(state,action) => {
+      state.character = action.payload.character
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchAllCharacters.pending, (state, action) => {
@@ -30,6 +63,10 @@ export const characterSlice = createSlice({
       .addCase(fetchAllCharacters.fulfilled, (state, action: PayloadAction<Character[]>) => {
         state.isLoading = false
         state.characters = action.payload
+        if(!isEmpty(action.payload))
+          state.isError = true
+        else
+          state.isError = false
       })
       .addCase(fetchAllCharacters.rejected, (state, action) => {
         state.isLoading = false
@@ -37,39 +74,10 @@ export const characterSlice = createSlice({
         state.isError = true
       })
   }
-      // try{
-        //     const rest = await fetch(process.env.API_URL + "people/?page=1")
-        //     const json = await rest.json()
-        //     let characters : Array<Character> = json.results
-        //     for(const character of characters){
-        //       if(character.species.length === CharacterMessage.NOTSPECIES ){
-        //         character.specie =  { 
-        //           name : CharacterMessage.HUMAN
-        //         }
-        //       }else{
-        //         //Obtenemos la primera especie, ya que pueden tener multples especies y eso llamaria multiples peticiones
-        //         const specie = await getSpecie(character.species[0])
-        //         character.specie =specie
-        //       }
-        //       if(character.vehicles.length !== CharacterMessage.NOTVEHICLES){
-        //         let vechicles = new Array<Vehicle>
-        //         for(const vehicle of character.vehicles){
-        //           vechicles.push(await getVehicle(vehicle))
-        //         }
-        //         character.vehiclesData = vechicles
-        //       }else{
-        //         character.vehiclesData = []
-        //       }
-        //       const planet = await getHomeWorld(character.homeworld)
-        //       character.planet = planet
-        //     }
-        //     return characters
-        //   }catch(ex){
-        //     console.log(ex)
-        //     return Characters.EMPTYCHARACTERS
-        //   }
+
 })
 
+export const { setCharacter , setKeysCharacter , setInitialStateCharacter } = characterSlice.actions
 
 export default characterSlice.reducer   
 

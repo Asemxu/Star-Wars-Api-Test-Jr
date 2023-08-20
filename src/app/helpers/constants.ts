@@ -6,7 +6,8 @@ const MessageTypes  = {
 
 const ValidFetch = {
     WITHERROR : true,
-    FAILEDTOLOADDATA : 'Failed to Load Data'
+    FAILEDTOLOADDATA : 'Failed to Load Data',
+    FAILEDDATAKEY : 'detail'
 } 
 
 const ColorClass = {
@@ -28,4 +29,13 @@ const Titles = {
     HEADER : 'Ravn Star Wars Registry',
 
 }
-export  { MessageTypes , ValidFetch , ColorClass , CharacterMessage , Characters , Titles } 
+
+const Routes = {
+    CHARACTERPATHNAME : '/character/'
+}
+
+const Breakpoints = {
+    NOTMOBILE : 767
+}
+
+export  { MessageTypes , ValidFetch , ColorClass , CharacterMessage , Characters , Titles , Routes , Breakpoints } 

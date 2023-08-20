@@ -3,7 +3,7 @@ const isEmpty = (data:any) => {
     if(typeof data === 'object'){
         if(Array.isArray(data))
             return data.length !== Characters.EMPTY
-        return Object.keys(data).length === Characters.EMPTYCHARACTERS.length
+        return data.name.length === Characters.EMPTYCHARACTERS.length
     }
     return data.length !== Characters.EMPTY
 }

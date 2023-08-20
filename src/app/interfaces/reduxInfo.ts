@@ -1,3 +1,4 @@
+import Keys from "./Keys";
 import Character from "./character";
 
 interface ReduxInfo{
@@ -5,7 +6,9 @@ interface ReduxInfo{
     isError:Boolean,
     characters:Array<Character>
     titleHeader:string,
-    characterUrl:string
+    // characterUrl:string,
+    character:Character,
+    keysCharacter:Array<Keys>
 }
 
 export default ReduxInfo

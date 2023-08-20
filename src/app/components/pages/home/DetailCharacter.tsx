@@ -1,7 +1,8 @@
 import React from 'react'
 import Character from '@/app/interfaces/character'
 import Keys from '@/app/interfaces/Keys'
-
+import GeneralInformationItem from './generalInformationItem'
+import VehicleItem from './vehicleItem'
 const DetailCharacter:React.FC<{character:Character , keys:Array<Keys>}> = ({character , keys}) => {
   return (
     <section className="detail-character-container">
@@ -9,10 +10,7 @@ const DetailCharacter:React.FC<{character:Character , keys:Array<Keys>}> = ({cha
       <ul className="list-general-information">
       {keys.map((key, index) =>{
         return(
-          <li key={index} className="general-information-item">
-              <h2 className="text-light">{key.valueFormated}</h2>
-              <h2 className="text-dark">{character[key.originValue]}</h2>
-          </li>
+          <GeneralInformationItem key={index} keyValue={key} character={character}/>
         )
       })}
       </ul>
@@ -20,9 +18,7 @@ const DetailCharacter:React.FC<{character:Character , keys:Array<Keys>}> = ({cha
       <ul className='list-vehicles'>
         {character?.vehiclesData.map((vehicle,index) => {
           return (
-            <li key={index} className="vehicles-item">
-                <h2 className="text-light">{vehicle.name}</h2>
-            </li>
+            <VehicleItem vehicle={vehicle} key={index} />
           )
         })}
       </ul>

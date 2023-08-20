@@ -15,7 +15,8 @@ interface Character{
 	eye_color: string,
 	birth_year: string,
     vehicles: Array<string>
-    vehiclesData: Array<Vehicle>
+    vehiclesData: Array<Vehicle>,
+    url:string
 }
 
 export default Character
