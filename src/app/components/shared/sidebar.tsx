@@ -1,6 +1,5 @@
 'use client'
 import Message from "./message"
-import ListCharacters from "../pages/home/ListCharacters";
 import  { MessageTypes , ValidFetch , ColorClass, Breakpoints }  from "@/app/helpers/constants";
 import useCharacters from "@/hooks/useCharacters";
 import { useEffect } from "react";
@@ -10,9 +9,10 @@ import isEmpty from "@/app/utils/isEmpty";
 import React from "react";
 import useHeader from "@/hooks/useHeader";
 import useSwipe from "@/hooks/useSwipe";
+import ListCharacters from "../pages/home/listCharacters";
 
 const Sidebar:React.FC<{}> = ({}) => {
-  const { isError , isLoading , clickCharacterList , characters , character , currentPage , isExecutingFetch  } = useCharacters()
+  const { isError , isLoading , clickCharacterList , characters , character , currentPage  } = useCharacters()
   const dispatch = useDispatch()
   const { windowSize } = useHeader()
   const { handlers } = useSwipe()

@@ -1,6 +1,6 @@
 import React from 'react'
 import Character from '@/app/interfaces/character'
-import CharacterList from './CharacterList'
+import CharacterList from './characterList'
 const ListCharacters:React.FC<{characters:Array<Character> , handleClickCharacter:Function}> = ({characters , handleClickCharacter}) => {
   return(
     <ul className="list-characters">

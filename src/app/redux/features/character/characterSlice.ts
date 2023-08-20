@@ -1,5 +1,4 @@
 'use client'
-import Character from "@/app/interfaces/character";
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import ReduxInfo from "@/app/interfaces/reduxInfo";
 import { getAllCharacters } from "@/app/api/character";
